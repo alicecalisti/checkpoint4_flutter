@@ -52,14 +52,14 @@ class ApiServices {
     throw Exception('failed to load now playing movies');
   }
 
-  Future<Result> getDetails() async {
-    const endPoint = 'collection/{$collection_id}';
-    const url = '$baseUrl$endPoint$key';
+  // Future<Result> getDetails() async {
+  //   const endPoint = 'collection/{$collection_id}';
+  //   const url = '$baseUrl$endPoint$key';
 
-    final response = await http.get(Uri.parse(url), headers: {});
-    if (response.statusCode == 200) {
-      return Result.fromJson(jsonDecode(response.body));
-    }
-    throw Exception('failed to load details');
-  }
+  //   final response = await http.get(Uri.parse(url), headers: {});
+  //   if (response.statusCode == 200) {
+  //     return Result.fromJson(jsonDecode(response.body));
+  //   }
+  //   throw Exception('failed to load details');
+  // }
 }
