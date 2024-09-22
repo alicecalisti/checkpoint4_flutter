@@ -13,8 +13,7 @@ class MovieDetails extends StatefulWidget {
 
 class _MovieDetailsState extends State<MovieDetails> {
   ApiServices apiServices = ApiServices();
-  // late Future<ResultDetail> details;
-    Future<ResultDetail>? details;
+  late Future<ResultDetail>? details;
 
   @override
   void initState() {
@@ -58,3 +57,4 @@ class _MovieDetailsState extends State<MovieDetails> {
     );
   }
 }
+

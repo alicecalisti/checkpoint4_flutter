@@ -37,34 +37,6 @@ class ResultDetail {
   }
 }
 
-// class ResultDetail {
-//   final List<Details> details;
-
-//   ResultDetail({required this.details});
-
-//   factory ResultDetail.fromJson(Map<String, dynamic> json) {
-//     return ResultDetail(
-//       details: (json['details'] as List).map((y) => Details.fromJson(y)).toList(),
-//     );
-//   }
-// }
-
-
-
-// class ResultDetail {
-//   List<Details> details;
-
-//   ResultDetail({
-//     required this.details
-//   });
-
-//   factory ResultDetail.fromRawJson(String str) => ResultDetail.fromJson(json.decode(str));
-
-//   factory ResultDetail.fromJson(Map<String, dynamic> json) => ResultDetail(
-//         details: List<Details>.from(json["results"].map((y) => Details.fromJson(y)))
-//       );
-// }
-
 class Movie {
   bool adult;
   String backdropPath;
