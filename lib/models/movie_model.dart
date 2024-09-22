@@ -5,7 +5,7 @@ class Result {
   List<Movie> movies;
   int totalPages;
   int totalResults;
-
+  
   Result({
     required this.page,
     required this.movies,
@@ -19,9 +19,51 @@ class Result {
         page: json["page"],
         movies: List<Movie>.from(json["results"].map((x) => Movie.fromJson(x))),
         totalPages: json["total_pages"],
-        totalResults: json["total_results"],
+        totalResults: json["total_results"]
       );
 }
+
+class ResultDetail {
+  final List<Details> details;
+
+  ResultDetail({required this.details});
+
+  factory ResultDetail.fromJson(Map<String, dynamic> json) {
+    return ResultDetail(
+      details: json['details'] != null
+          ? (json['details'] as List).map((y) => Details.fromJson(y)).toList()
+          : [],
+    );
+  }
+}
+
+// class ResultDetail {
+//   final List<Details> details;
+
+//   ResultDetail({required this.details});
+
+//   factory ResultDetail.fromJson(Map<String, dynamic> json) {
+//     return ResultDetail(
+//       details: (json['details'] as List).map((y) => Details.fromJson(y)).toList(),
+//     );
+//   }
+// }
+
+
+
+// class ResultDetail {
+//   List<Details> details;
+
+//   ResultDetail({
+//     required this.details
+//   });
+
+//   factory ResultDetail.fromRawJson(String str) => ResultDetail.fromJson(json.decode(str));
+
+//   factory ResultDetail.fromJson(Map<String, dynamic> json) => ResultDetail(
+//         details: List<Details>.from(json["results"].map((y) => Details.fromJson(y)))
+//       );
+// }
 
 class Movie {
   bool adult;
@@ -78,179 +120,91 @@ class Movie {
 
 class Details {
   bool? adult;
-  String? backdropPath;
-  BelongsToCollection? belongsToCollection;
-  int? budget;
-  List<Genres>? genres;
-  String? homepage;
-  int? id;
-  String? imdbId;
-  List<String>? originCountry;
-  String? originalLanguage;
-  String? originalTitle;
-  String? overview;
-  double? popularity;
-  String? posterPath;
-  List<ProductionCompanies>? productionCompanies;
-  List<ProductionCountries>? productionCountries;
-  String? releaseDate;
-  int? revenue;
-  int? runtime;
-  List<SpokenLanguages>? spokenLanguages;
-  String? status;
-  String? tagline;
-  String? title;
-  bool? video;
-  double? voteAverage;
-  int? voteCount;
+  String backdropPath;
+  String belongsToCollection;
+  int budget;
+  List<Genres> genres;
+  String homepage;
+  int id;
+  String imdbId;
+  List<String> originCountry;
+  String originalLanguage;
+  String originalTitle;
+  String overview;
+  double popularity;
+  String posterPath;
+  List<ProductionCompanies> productionCompanies;
+  List<ProductionCountries> productionCountries;
+  String releaseDate;
+  int revenue;
+  int runtime;
+  List<SpokenLanguages> spokenLanguages;
+  String status;
+  String tagline;
+  String title;
+  bool video;
+  double voteAverage;
+  int voteCount;
 
   Details(
-      {this.adult,
-      this.backdropPath,
-      this.belongsToCollection,
-      this.budget,
-      this.genres,
-      this.homepage,
-      this.id,
-      this.imdbId,
-      this.originCountry,
-      this.originalLanguage,
-      this.originalTitle,
-      this.overview,
-      this.popularity,
-      this.posterPath,
-      this.productionCompanies,
-      this.productionCountries,
-      this.releaseDate,
-      this.revenue,
-      this.runtime,
-      this.spokenLanguages,
-      this.status,
-      this.tagline,
-      this.title,
-      this.video,
-      this.voteAverage,
-      this.voteCount});
+      {required this.adult,
+      required this.backdropPath,
+      required this.belongsToCollection,
+      required this.budget,
+      required this.genres,
+      required this.homepage,
+      required this.id,
+      required this.imdbId,
+      required this.originCountry,
+      required this.originalLanguage,
+      required this.originalTitle,
+      required this.overview,
+      required this.popularity,
+      required this.posterPath,
+      required this.productionCompanies,
+      required this.productionCountries,
+      required this.releaseDate,
+      required this.revenue,
+      required this.runtime,
+      required this.spokenLanguages,
+      required this.status,
+      required this.tagline,
+      required this.title,
+      required this.video,
+      required this.voteAverage,
+      required this.voteCount});
 
-  Details.fromJson(Map<String, dynamic> json) {
-    adult = json['adult'];
-    backdropPath = json['backdrop_path'];
-    belongsToCollection = json['belongs_to_collection'] != null
-        ? new BelongsToCollection.fromJson(json['belongs_to_collection'])
-        : null;
-    budget = json['budget'];
-    if (json['genres'] != null) {
-      genres = <Genres>[];
-      json['genres'].forEach((v) {
-        genres!.add(new Genres.fromJson(v));
-      });
-    }
-    homepage = json['homepage'];
-    id = json['id'];
-    imdbId = json['imdb_id'];
-    originCountry = json['origin_country'].cast<String>();
-    originalLanguage = json['original_language'];
-    originalTitle = json['original_title'];
-    overview = json['overview'];
-    popularity = json['popularity'];
-    posterPath = json['poster_path'];
-    if (json['production_companies'] != null) {
-      productionCompanies = <ProductionCompanies>[];
-      json['production_companies'].forEach((v) {
-        productionCompanies!.add(new ProductionCompanies.fromJson(v));
-      });
-    }
-    if (json['production_countries'] != null) {
-      productionCountries = <ProductionCountries>[];
-      json['production_countries'].forEach((v) {
-        productionCountries!.add(new ProductionCountries.fromJson(v));
-      });
-    }
-    releaseDate = json['release_date'];
-    revenue = json['revenue'];
-    runtime = json['runtime'];
-    if (json['spoken_languages'] != null) {
-      spokenLanguages = <SpokenLanguages>[];
-      json['spoken_languages'].forEach((v) {
-        spokenLanguages!.add(new SpokenLanguages.fromJson(v));
-      });
-    }
-    status = json['status'];
-    tagline = json['tagline'];
-    title = json['title'];
-    video = json['video'];
-    voteAverage = json['vote_average'];
-    voteCount = json['vote_count'];
-  }
-
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['adult'] = this.adult;
-    data['backdrop_path'] = this.backdropPath;
-    if (this.belongsToCollection != null) {
-      data['belongs_to_collection'] = this.belongsToCollection!.toJson();
-    }
-    data['budget'] = this.budget;
-    if (this.genres != null) {
-      data['genres'] = this.genres!.map((v) => v.toJson()).toList();
-    }
-    data['homepage'] = this.homepage;
-    data['id'] = this.id;
-    data['imdb_id'] = this.imdbId;
-    data['origin_country'] = this.originCountry;
-    data['original_language'] = this.originalLanguage;
-    data['original_title'] = this.originalTitle;
-    data['overview'] = this.overview;
-    data['popularity'] = this.popularity;
-    data['poster_path'] = this.posterPath;
-    if (this.productionCompanies != null) {
-      data['production_companies'] =
-          this.productionCompanies!.map((v) => v.toJson()).toList();
-    }
-    if (this.productionCountries != null) {
-      data['production_countries'] =
-          this.productionCountries!.map((v) => v.toJson()).toList();
-    }
-    data['release_date'] = this.releaseDate;
-    data['revenue'] = this.revenue;
-    data['runtime'] = this.runtime;
-    if (this.spokenLanguages != null) {
-      data['spoken_languages'] =
-          this.spokenLanguages!.map((v) => v.toJson()).toList();
-    }
-    data['status'] = this.status;
-    data['tagline'] = this.tagline;
-    data['title'] = this.title;
-    data['video'] = this.video;
-    data['vote_average'] = this.voteAverage;
-    data['vote_count'] = this.voteCount;
-    return data;
-  }
-}
-
-class BelongsToCollection {
-  int? id;
-  String? name;
-  String? posterPath;
-  String? backdropPath;
-
-  BelongsToCollection({this.id, this.name, this.posterPath, this.backdropPath});
-
-  BelongsToCollection.fromJson(Map<String, dynamic> json) {
-    id = json['id'];
-    name = json['name'];
-    posterPath = json['poster_path'];
-    backdropPath = json['backdrop_path'];
-  }
-
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['id'] = this.id;
-    data['name'] = this.name;
-    data['poster_path'] = this.posterPath;
-    data['backdrop_path'] = this.backdropPath;
-    return data;
-  }
+  factory Details.fromRawJson(String str) => Details.fromJson(json.decode(str));
+ 
+  factory Details.fromJson(Map<String, dynamic> json) => Details (
+    adult: json['adult'] ?? false,
+    backdropPath: json['backdrop_path'] ?? '',
+    belongsToCollection : json['belongs_to_collection'] ?? '',
+    budget: json['budget'] ?? 0 ,
+    // genres: List<Genres>.from(json["genre"].map((y)=>y)),
+    genres: List<Genres>.from(json["genres"].map((y) => Genres.fromJson(y))),
+    homepage: json['homepage'] ?? '',
+    id: json['id'] ?? 0,
+    imdbId: json['imdb_id'] ?? '',
+    originCountry: List<String>.from(json["country"].map((y)=>y)),
+    originalLanguage: json['original_language'] ?? '',
+    originalTitle: json['original_title']?? '',
+    overview: json['overview'] ?? '',
+    popularity: json['popularity'] ?? 0,
+    posterPath: json['poster_path'] ?? '',
+    productionCompanies: List<ProductionCompanies>.from(json["production_companies"].map((y)=> ProductionCompanies.fromJson(y))),
+    productionCountries: List<ProductionCountries>.from(json["production_countries"].map((y)=> ProductionCountries.fromJson(y))),
+    releaseDate: json['release_date'] ?? '',
+    revenue: json['revenue'] ?? 0,
+    runtime: json['runtime'] ?? 0 ,
+    spokenLanguages: List<SpokenLanguages>.from(json["spoken_lenguages"].map((y)=> SpokenLanguages.fromJson(y))),
+    status: json['status'] ?? '',
+    tagline: json['tagline'] ?? '',
+    title: json['title'] ?? '',
+    video: json['video'] ?? false,
+    voteAverage: json['vote_average'] ?? 0,
+    voteCount: json['vote_count'] ?? 0,
+  );
 }
 
 class Genres {
@@ -337,3 +291,4 @@ class SpokenLanguages {
     return data;
   }
 }
+

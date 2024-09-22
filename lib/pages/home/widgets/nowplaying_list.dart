@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:movie_app/models/movie_model.dart';
-import 'package:movie_app/pages/movieDetails/movieDetails.dart';
+import 'package:movie_app/pages/movieDetails/movieDetailsPage.dart';
 import 'package:movie_app/widgets/custom_card_thumbnail.dart';
 
 class NowPlayingList extends StatefulWidget {
