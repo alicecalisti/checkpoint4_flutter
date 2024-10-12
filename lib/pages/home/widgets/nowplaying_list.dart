@@ -36,12 +36,10 @@ class _NowPlayingListState extends State<NowPlayingList> {
                   : widget.movies.length,
               itemBuilder: (context, index) {
                 return GestureDetector(
-                  onTap: () {
-                    
-                    Navigator.push(
-                    context,
+                  onTap: () {                    
+                    Navigator.of(context).push(
                     MaterialPageRoute(          
-                      builder: (context) => MovieDetails(movieId: widget.movies[index].id),
+                      builder: (context) => MovieDetailsPage(movieId: widget.movies[index].id),
                     ),                    
                   );
                   },
