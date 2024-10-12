@@ -5,7 +5,6 @@ import 'package:movie_app/models/detail_model.dart';
 import 'package:movie_app/models/movie_model.dart';
 import 'package:http/http.dart' as http;
 import 'package:movie_app/models/review_model.dart';
-import 'package:movie_app/pages/movieDetails/movieDetailsPage.dart';
 
 const baseUrl = 'https://api.themoviedb.org/3/';
 const key = '?api_key=$apiKey';
