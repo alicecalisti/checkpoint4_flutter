@@ -19,7 +19,7 @@ class _MovieReviewPageState extends State<MovieReviewPage> {
   @override
   void initState() {
     super.initState();
-    futureReviews = apiServices.getReviews(widget.movieId); // Certifique-se de que existe este método na sua service
+    futureReviews = apiServices.getReviews(widget.movieId);
   }
 
   @override
